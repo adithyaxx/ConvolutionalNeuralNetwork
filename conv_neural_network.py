@@ -83,14 +83,13 @@ convnet = fully_connected(convnet, 1024, activation='relu')
 convnet = dropout(convnet, 0.8)
 convnet = fully_connected(convnet, 2, activation='softmax')
 convnet = regression(convnet, optimizer='adam', learning_rate=LR, loss='categorical_crossentropy', name='targets')
-model = tflearn.DNN(convnet, tensorboard_dir='log', tensorboard_verbose=0, checkpoint_path='cat-dog-identifier.tfl.ckpt')
+model = tflearn.DNN(convnet, tensorboard_dir='log', tensorboard_verbose=0, best_checkpoint_path='best/bestcheckpoint.tfl.ckpt')
 
-if os.path.exists('{}.meta'.format(MODEL_NAME)):
-    model.load(MODEL_NAME)
-    print('Model Loaded!')
+model.load('./cat-dog-identifier.tfl')
+print('Existing Model Loaded!')
 
-else:
-    model.fit({'input': X}, {'targets': Y}, n_epoch=20,
+
+model.fit({'input': X}, {'targets': Y}, n_epoch=100,
           validation_set=({'input': test_x}, {'targets': test_y}),
           snapshot_step=500, show_metric=True, run_id=MODEL_NAME, snapshot_epoch=True)
 
@@ -107,5 +106,5 @@ prediction = model.predict([data])[0]
 fig = plt.figure(figsize=(6, 6))
 ax = fig.add_subplot(111)
 ax.imshow(img_data, cmap="gray")
-print("cat: {prediction[0]}, dog: {prediction[1]}")
+print(f"cat: {prediction[0]}, dog: {prediction[1]}")
 '''
