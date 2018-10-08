@@ -1,2 +1,2 @@
-model_checkpoint_path: "/Users/adithya/Documents/GitHub/ConvolutionalNeuralNetwork/model/ckpt8560"
-all_model_checkpoint_paths: "/Users/adithya/Documents/GitHub/ConvolutionalNeuralNetwork/model/ckpt8560"
+model_checkpoint_path: "/Users/adithya/Documents/GitHub/ConvolutionalNeuralNetwork/model/cat-dog-identifier.tfl"
+all_model_checkpoint_paths: "/Users/adithya/Documents/GitHub/ConvolutionalNeuralNetwork/model/cat-dog-identifier.tfl"

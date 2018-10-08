@@ -92,7 +92,7 @@ model = tflearn.DNN(convnet, tensorboard_dir='log', tensorboard_verbose=0, best_
 model.load('model/cat-dog-identifier.tfl')
 print('Existing Model loaded!')
 
-model.fit({'input': X}, {'targets': Y}, n_epoch=20,
+model.fit({'input': X}, {'targets': Y}, n_epoch=100,
           validation_set=({'input': test_x}, {'targets': test_y}),
           snapshot_step=500, shuffle=True, show_metric=True, batch_size=96, run_id=MODEL_NAME, snapshot_epoch=True)
 
